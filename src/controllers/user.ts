@@ -83,6 +83,17 @@ export const getAllUsers = async () => {
   }
 };
 
+export const getUserByID = async (id: string) => {
+  try {
+      return await UserModel.findById(id);
+  } catch (err) {
+      return {
+          status: 500,
+          error: err
+      }
+  }
+};
+
 export const createUser = async ({ userName, email, password, type }: CreateUserDTO) => {
   if (!userName || !email || !password || !type)
   return {
